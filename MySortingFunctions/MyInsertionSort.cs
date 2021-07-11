@@ -3,17 +3,31 @@
  * 07/10/2021 */
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MySortingFunctions
 {
     class MyInsertionSort
     {
-        //TODO: Write InsertionSort
-        public static int[] InsertionSort(int[] arr)
+        public static void InsertionSort(int[] arr)
         {
-            return arr;
+            int n = arr.Length - 1;
+            for (int i = 1; i <= n; i++)
+            {
+                if (arr[i] < arr[i - 1])
+                {
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (arr[i] < arr[j])
+                        {
+                            int temp = arr[i];
+                            arr[i] = arr[j];
+                            arr[j] = temp;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("Insertion Sort: ");
+            Console.WriteLine("[{0}]", string.Join(", ", arr));
         }
     }
 }
