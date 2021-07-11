@@ -26,8 +26,6 @@ namespace MySortingFunctions
                     }
                 }
             }
-            Console.WriteLine("Insertion Sort: ");
-            Console.WriteLine("[{0}]", string.Join(", ", arr));
         }
     }
 }
