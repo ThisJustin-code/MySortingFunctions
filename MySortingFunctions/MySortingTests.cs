@@ -42,9 +42,9 @@ namespace MySortingFunctions
             Console.WriteLine("Bubble Sort");
             Console.WriteLine("[{0}]", string.Join(", ", bubbleTestArray));
 
-            //MyMergeSort.MergeSort(mergeTestArray);
-            //Console.WriteLine("Merge Sort");
-            //Console.WriteLine("[{0}]", string.Join(", ", mergeTestArray));
+            MyMergeSort.MergeSort(mergeTestArray, 0, mergeTestArray.Length - 1);
+            Console.WriteLine("Merge Sort");
+            Console.WriteLine("[{0}]", string.Join(", ", mergeTestArray));
 
             MyQuickSort.QuickSort(quickTestArray, 0, quickTestArray.Length - 1);
             Console.WriteLine("Quick Sort");
