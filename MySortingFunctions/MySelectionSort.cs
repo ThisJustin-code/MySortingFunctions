@@ -11,7 +11,7 @@ namespace MySortingFunctions
         public static void SelectionSort(int[] arr)
         {
             int n = arr.Length - 1;
-            for (int i = 1; i < n; i++)
+            for (int i = 0; i < n; i++)
             {
                 int min = i;
                 for (int j = i + 1; j <= n; j++)
@@ -28,8 +28,6 @@ namespace MySortingFunctions
                     arr[i] = temp;
                 }
             }
-            Console.WriteLine("Selection Sort: ");
-            Console.WriteLine("[{0}]", string.Join(", ", arr));
         }
     }
 }
