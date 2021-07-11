@@ -2,8 +2,6 @@
  * C# Practice
  * 07/10/2021 */
 
-using System;
-
 namespace MySortingFunctions
 {
     class MySelectionSort
