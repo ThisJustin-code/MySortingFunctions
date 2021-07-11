@@ -10,23 +10,45 @@ namespace MySortingFunctions
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Unsorted Array");
-
             //Create simple unsorted array
-            int[] arr1 = { 1, 5, 7, 3, 4, 9, 2, 6, 8 };
-            int[] arr2 = { 1, 5, 7, 3, 4, 9, 2, 6, 8 };
-            int[] arr3 = { 1, 5, 7, 3, 4, 9, 2, 6, 8 };
-            int[] arr4 = { 1, 5, 7, 3, 4, 9, 2, 6, 8 };
-            int[] arr5 = { 1, 5, 7, 3, 4, 9, 2, 6, 8 };
-            Console.WriteLine("[{0}]", string.Join(", ", arr1));
-            Console.WriteLine("\n");
+            int[] arr = { 10, 14, 28, 11, 7, 16, 30, 50, 25, 18, 67, 35, 65, 76, 234, 123, 157, 45, 23, 78, 99, 2, 87, 49 };
+            Console.WriteLine("Unsorted Array");
+            Console.WriteLine("[{0}]", string.Join(", ", arr));
 
-            //Run sorting algorithms on the array 
-            MySelectionSort.SelectionSort(arr1);
-            MyInsertionSort.InsertionSort(arr2);
-            MyBubbleSort.BubbleSort(arr3);
-            //MyMergeSort.MergeSort(arr4);
-            //MyQuickSort.QuickSort(arr5);
+            //Create test arrays
+            int[] selectionTestArray = new int[arr.Length];
+            int[] insertionTestArray = new int[arr.Length];
+            int[] bubbleTestArray = new int[arr.Length];
+            int[] mergeTestArray = new int[arr.Length];
+            int[] quickTestArray = new int[arr.Length];
+
+            //Copy original array into test arrays
+            arr.CopyTo(selectionTestArray, 0);
+            arr.CopyTo(insertionTestArray, 0);
+            arr.CopyTo(bubbleTestArray, 0);
+            arr.CopyTo(mergeTestArray, 0);
+            arr.CopyTo(quickTestArray, 0);
+
+            //Run sorting algorithms on the array and print test results
+            MySelectionSort.SelectionSort(selectionTestArray);
+            Console.WriteLine("Selection Sort");
+            Console.WriteLine("[{0}]", string.Join(", ", selectionTestArray));
+
+            MyInsertionSort.InsertionSort(insertionTestArray);
+            Console.WriteLine("Insertion Sort");
+            Console.WriteLine("[{0}]", string.Join(", ", insertionTestArray));
+
+            MyBubbleSort.BubbleSort(bubbleTestArray);
+            Console.WriteLine("Bubble Sort");
+            Console.WriteLine("[{0}]", string.Join(", ", bubbleTestArray));
+
+            //MyMergeSort.MergeSort(mergeTestArray);
+            //Console.WriteLine("Merge Sort");
+            //Console.WriteLine("[{0}]", string.Join(", ", mergeTestArray));
+
+            MyQuickSort.QuickSort(quickTestArray, 0, quickTestArray.Length - 1);
+            Console.WriteLine("Quick Sort");
+            Console.WriteLine("[{0}]", string.Join(", ", quickTestArray));
         }
     }
 }
