@@ -30,8 +30,6 @@ namespace MySortingFunctions
                     swaps = false;
                 }
             }
-            Console.WriteLine("Bubble Sort: ");
-            Console.WriteLine("[{0}]", string.Join(", ", arr));
         }
     }
 }
