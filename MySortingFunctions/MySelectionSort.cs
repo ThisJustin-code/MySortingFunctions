@@ -15,7 +15,7 @@ namespace MySortingFunctions
         {
             // initialize n as the length of the array - 1
             int n = arr.Length - 1;
-            for (int i = 0; i < n; i++)  // loop over unsorted array
+            for (int i = 0; i < n; i++)  // loop over unsorted array from 0 to n - 1
             {
                 int min = i; // set min index to i
                 for (int j = i + 1; j <= n; j++) // set j to i + 1 and loop over rest of unsorted array
