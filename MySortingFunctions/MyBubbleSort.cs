@@ -28,7 +28,7 @@ namespace MySortingFunctions
                         int temp = arr[i];
                         arr[i] = arr[i + 1];
                         arr[i + 1] = temp;
-                        count += 1;
+                        count += 1; //increment count
                     }
                 }
                 if (count == 0) // if count equals 0 (no swaps were made), set swaps to false
