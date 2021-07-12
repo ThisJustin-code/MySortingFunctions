@@ -32,6 +32,8 @@ namespace MySortingFunctions
             int[] bubbleTestArray = new int[bigArr.Length];
             int[] mergeTestArray = new int[bigArr.Length];
             int[] quickTestArray = new int[bigArr.Length];
+            int[] heapTestArray = new int[bigArr.Length];
+            int[] radixTestArray = new int[bigArr.Length];
 
             // copy original array into test arrays
             bigArr.CopyTo(selectionTestArray, 0);
@@ -39,6 +41,8 @@ namespace MySortingFunctions
             bigArr.CopyTo(bubbleTestArray, 0);
             bigArr.CopyTo(mergeTestArray, 0);
             bigArr.CopyTo(quickTestArray, 0);
+            bigArr.CopyTo(heapTestArray, 0);
+            bigArr.CopyTo(radixTestArray, 0);
 
             Console.WriteLine("Array created.");
 
@@ -90,6 +94,24 @@ namespace MySortingFunctions
             ElapsedTimeString(timer.Elapsed);
             timer.Reset();
             //Console.WriteLine("[{0}]", string.Join(", ", quickTestArray));
+
+            Console.WriteLine("\nBegin Heap Sort...");
+            timer.Start();
+            MyHeapSort.HeapSort(heapTestArray);
+            timer.Stop();
+            Console.WriteLine("Heap Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", heapTestArray));
+
+            Console.WriteLine("\nBegin Radix Sort...");
+            timer.Start();
+            MyRadixSort.RadixSort(radixTestArray);
+            timer.Stop();
+            Console.WriteLine("Radix Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", radixTestArray));
         }
         static void ElapsedTimeString(TimeSpan elapsed)
         {
@@ -102,20 +124,22 @@ namespace MySortingFunctions
 }
 
 /*
+PREVIOUS RUNS:
+
 Creating unsorted array of 100000 intgers...
 Array created.
 
 Begin Selection Sort...
 Selection Sort Complete
-RunTime 00:00:12.82
+RunTime 00:00:12.83
 
 Begin Insertion Sort...
 Insertion Sort Complete
-RunTime 00:00:18.97
+RunTime 00:00:18.87
 
 Begin Bubble Sort...
 Bubble Sort Complete
-RunTime 00:00:51.22
+RunTime 00:00:50.51
 
 Begin Merge Sort...
 Merge Sort Complete
@@ -124,4 +148,31 @@ RunTime 00:00:00.02
 Begin Quick Sort...
 Quick Sort Complete
 RunTime 00:00:00.01
+
+Begin Heap Sort...
+Heap Sort Complete
+RunTime 00:00:00.04
+
+Begin Radix Sort...
+Radix Sort Complete
+RunTime 00:00:00.01
+
+Creating unsorted array of 100000000 intgers...
+Array created.
+
+Begin Merge Sort...
+Merge Sort Complete
+RunTime 00:00:38.70
+
+Begin Quick Sort...
+Quick Sort Complete
+RunTime 00:00:26.76
+
+Begin Heap Sort...
+Heap Sort Complete
+RunTime 00:01:41.20
+
+Begin Radix Sort...
+Radix Sort Complete
+RunTime 00:00:24.27
 */
