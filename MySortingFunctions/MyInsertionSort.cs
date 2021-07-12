@@ -7,13 +7,13 @@ namespace MySortingFunctions
     class MyInsertionSort
     {
         /* InsertionSort takes an unsorted array and sorts it using the insertion sort algorithm.
-        * This works by iterating over the unsorted array from indices 1 to the length of the array.
-        * The current element in the loop is compared to the previous element. If the current element
-        * is smaller than the one before it, then the current element is compared to the elements that
-        * come before both the current and its previous starting from the beginning of the array. The
-        * current element is repeatedly swapped with any elements it is less than until it is placed
-        * in its proper spot.
-        */
+         * This works by iterating over the unsorted array from indices 1 to the length of the array.
+         * The current element in the loop is compared to the previous element. If the current element
+         * is smaller than the one before it, then the current element is compared to the elements that
+         * come before both the current and its previous starting from the beginning of the array. The
+         * current element is repeatedly swapped with any elements it is less than until it is placed
+         * in its proper spot.
+         */
         public static void InsertionSort(int[] arr)
         {
             // initialize n as the length of the array - 1
