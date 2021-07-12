@@ -4,6 +4,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Linq;
 
 namespace MySortingFunctions
 {
@@ -12,44 +13,115 @@ namespace MySortingFunctions
         static void Main(string[] args)
         {
             // create simple unsorted array
-            int[] arr = { 10, 14, 28, 11, 7, 16, 30, 50, 25, 18, 67, 35, 65, 76, 234, 123, 157, 45, 23, 78, 99, 2, 87, 49 };
-            Console.WriteLine("Unsorted Array");
-            Console.WriteLine("[{0}]", string.Join(", ", arr));
+
+            int size = 100000;
+
+            Console.WriteLine("Creating unsorted array of " + size + " intgers...");
+
+            int[] tempArr = new int[size];
+
+            for (int i = 0; i < tempArr.Length; i++)
+                tempArr[i] = i + 1;
+
+            Random r = new Random();
+            int[] bigArr = tempArr.OrderBy(x => r.Next()).ToArray();
 
             // create test arrays
-            int[] selectionTestArray = new int[arr.Length];
-            int[] insertionTestArray = new int[arr.Length];
-            int[] bubbleTestArray = new int[arr.Length];
-            int[] mergeTestArray = new int[arr.Length];
-            int[] quickTestArray = new int[arr.Length];
+            int[] selectionTestArray = new int[bigArr.Length];
+            int[] insertionTestArray = new int[bigArr.Length];
+            int[] bubbleTestArray = new int[bigArr.Length];
+            int[] mergeTestArray = new int[bigArr.Length];
+            int[] quickTestArray = new int[bigArr.Length];
 
             // copy original array into test arrays
-            arr.CopyTo(selectionTestArray, 0);
-            arr.CopyTo(insertionTestArray, 0);
-            arr.CopyTo(bubbleTestArray, 0);
-            arr.CopyTo(mergeTestArray, 0);
-            arr.CopyTo(quickTestArray, 0);
+            bigArr.CopyTo(selectionTestArray, 0);
+            bigArr.CopyTo(insertionTestArray, 0);
+            bigArr.CopyTo(bubbleTestArray, 0);
+            bigArr.CopyTo(mergeTestArray, 0);
+            bigArr.CopyTo(quickTestArray, 0);
+
+            Console.WriteLine("Array created.");
+
+            Stopwatch timer = new Stopwatch();
 
             // run sorting algorithms on the array and print test results
+
+            Console.WriteLine("\nBegin Selection Sort...");
+            timer.Start();
             MySelectionSort.SelectionSort(selectionTestArray);
-            Console.WriteLine("Selection Sort");
-            Console.WriteLine("[{0}]", string.Join(", ", selectionTestArray));
+            timer.Stop();
+            Console.WriteLine("Selection Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", selectionTestArray));
 
+            Console.WriteLine("\nBegin Insertion Sort...");
+            timer.Start();
             MyInsertionSort.InsertionSort(insertionTestArray);
-            Console.WriteLine("Insertion Sort");
-            Console.WriteLine("[{0}]", string.Join(", ", insertionTestArray));
+            timer.Stop();
+            Console.WriteLine("Insertion Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", insertionTestArray));
 
+            Console.WriteLine("\nBegin Bubble Sort...");
+            timer.Start();
             MyBubbleSort.BubbleSort(bubbleTestArray);
-            Console.WriteLine("Bubble Sort");
-            Console.WriteLine("[{0}]", string.Join(", ", bubbleTestArray));
+            timer.Stop();
+            Console.WriteLine("Bubble Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", bubbleTestArray));
 
+            Console.WriteLine("\nBegin Merge Sort...");
+            timer.Start();
             MyMergeSort.MergeSort(mergeTestArray, 0, mergeTestArray.Length - 1);
-            Console.WriteLine("Merge Sort");
-            Console.WriteLine("[{0}]", string.Join(", ", mergeTestArray));
+            timer.Stop();
+            Console.WriteLine("Merge Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", mergeTestArray));
 
+            Console.WriteLine("\nBegin Quick Sort...");
+            timer.Start();
             MyQuickSort.QuickSort(quickTestArray, 0, quickTestArray.Length - 1);
-            Console.WriteLine("Quick Sort");
-            Console.WriteLine("[{0}]", string.Join(", ", quickTestArray));
+            timer.Stop();
+            Console.WriteLine("Quick Sort Complete");
+            ElapsedTimeString(timer.Elapsed);
+            timer.Reset();
+            //Console.WriteLine("[{0}]", string.Join(", ", quickTestArray));
+        }
+        static void ElapsedTimeString(TimeSpan elapsed)
+        {
+            string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
+            elapsed.Hours, elapsed.Minutes, elapsed.Seconds,
+            elapsed.Milliseconds / 10);
+            Console.WriteLine("RunTime " + elapsedTime);
         }
     }
 }
+
+/*
+Creating unsorted array of 100000 intgers...
+Array created.
+
+Begin Selection Sort...
+Selection Sort Complete
+RunTime 00:00:12.82
+
+Begin Insertion Sort...
+Insertion Sort Complete
+RunTime 00:00:18.97
+
+Begin Bubble Sort...
+Bubble Sort Complete
+RunTime 00:00:51.22
+
+Begin Merge Sort...
+Merge Sort Complete
+RunTime 00:00:00.02
+
+Begin Quick Sort...
+Quick Sort Complete
+RunTime 00:00:00.01
+*/
